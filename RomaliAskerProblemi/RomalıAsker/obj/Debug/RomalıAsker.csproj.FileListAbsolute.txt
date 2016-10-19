@@ -1,0 +1,12 @@
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\bin\Debug\RomalıAsker.exe.config
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\bin\Debug\RomalıAsker.exe
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\bin\Debug\RomalıAsker.pdb
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\obj\Debug\RomalıAsker.csprojResolveAssemblyReference.cache
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\obj\Debug\RomalıAsker.exe
+C:\Users\Sefa\Desktop\RomalıAsker\RomalıAsker\obj\Debug\RomalıAsker.pdb
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.exe.config
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.exe
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.pdb
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.exe
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.pdb
+C:\Users\Sefa\Desktop\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.csprojResolveAssemblyReference.cache
