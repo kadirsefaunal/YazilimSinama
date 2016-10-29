@@ -23,7 +23,7 @@ namespace RomalıAsker
                 if (SayiMi.Kontrol(adimSayisi))
                 {
                     aSayisi = Convert.ToInt32(adimSayisi);
-                    if (kSayisi > 1 && aSayisi > 0)
+                    if (kSayisi > 2 && aSayisi > 0)
                     {
                         int[] kisiler = new int[kSayisi];
                         for (int i = 0; i < kSayisi; i++)
@@ -45,7 +45,7 @@ namespace RomalıAsker
                             k = 0;
                             for (int i = 0; i < kSayisi; i++)
                             {
-                                Console.Write(kisiler[i] + " - ");
+                                Console.Write(kisiler[i] + "   ");
                             }
                             Console.WriteLine();
                         }
@@ -57,7 +57,7 @@ namespace RomalıAsker
                         }
                     }
                     else
-                        Console.WriteLine("Kişi sayısı 1'den fazla olmalı yada adım sayısı 0'dan fazla olmalı!");
+                        Console.WriteLine("Kişi sayısı 2'den fazla olmalı yada adım sayısı 0'dan fazla olmalı!");
                 }
                 else
                     Console.WriteLine("Adim sayısı hatalı!");

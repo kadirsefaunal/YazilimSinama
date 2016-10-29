@@ -16,3 +16,9 @@ C:\Users\Sefa\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\bin\Debug\R
 C:\Users\Sefa\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.exe
 C:\Users\Sefa\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.pdb
 C:\Users\Sefa\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.csprojResolveAssemblyReference.cache
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.exe.config
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.exe
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.exe
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\bin\Debug\RomalıAsker.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\RomaliAskerProblemi\RomalıAsker\obj\Debug\RomalıAsker.csprojResolveAssemblyReference.cache
