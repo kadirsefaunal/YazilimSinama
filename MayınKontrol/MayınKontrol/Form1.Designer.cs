@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnOlustur = new System.Windows.Forms.Button();
             this.btnBasla = new System.Windows.Forms.Button();
             this.lblEn = new System.Windows.Forms.Label();
             this.lblBoy = new System.Windows.Forms.Label();
             this.txtEn = new System.Windows.Forms.TextBox();
             this.txtBoy = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnOlustur
@@ -54,6 +56,7 @@
             this.btnBasla.TabIndex = 1;
             this.btnBasla.Text = "Başla";
             this.btnBasla.UseVisualStyleBackColor = true;
+            this.btnBasla.Click += new System.EventHandler(this.btnBasla_Click);
             // 
             // lblEn
             // 
@@ -87,6 +90,11 @@
             this.txtBoy.Size = new System.Drawing.Size(42, 20);
             this.txtBoy.TabIndex = 5;
             // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +121,7 @@
         private System.Windows.Forms.Label lblBoy;
         private System.Windows.Forms.TextBox txtEn;
         private System.Windows.Forms.TextBox txtBoy;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
