@@ -46,6 +46,7 @@ namespace MayınKontrol
         {
             if (btnBasla.Text == "Başla")
             {
+                butonlar[1, 1].Tag = Convert.ToInt32(butonlar[1, 1].Tag) + 1;
                 timer.Start();
                 btnBasla.Text = "Dur";
                 txtBoy.Clear();
@@ -83,38 +84,39 @@ namespace MayınKontrol
             switch (yon)
             {
                 case 0:
-                    j--;
-                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
-                    butonlar[i, j].BackColor = Color.White;
-                    break;
-                case 1:
-                    i--;
-                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
-                    butonlar[i, j].BackColor = Color.White;
-                    break;
-                case 2:
                     i++;
                     butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
                     butonlar[i, j].BackColor = Color.White;
                     break;
-                case 3:
+                case 1:
                     j++;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                case 2:
+                    i--;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                case 3:
+                    j--;
                     butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
                     butonlar[i, j].BackColor = Color.White;
                     break;
                 default:
                     timer.Stop();
                     btnBasla.Text = "Başla";
+                    btnOlustur.Enabled = true;
                     MessageBox.Show("Yon hatası!");
                     break;
             }
             BittiMi();
         }
 
-        //0 = sol
-        //1 = ust
-        //2 = alt
-        //3 = sag
+        //0 = alt
+        //1 = sag
+        //2 = ust
+        //3 = sol
         private int YonBul(int x, int y)
         {
             bool[] yon = new bool[4]{ false, false, false, false };
@@ -123,26 +125,25 @@ namespace MayınKontrol
             int alt = Convert.ToInt32(butonlar[x + 1, y].Tag);
             int sag = Convert.ToInt32(butonlar[x, y + 1].Tag);
 
-            if (sol != 999)
-                yon[0] = true;
-            if (ust != 999)
-                yon[1] = true;
             if (alt != 999)
-                yon[2] = true;
+                yon[0] = true;
             if (sag != 999)
+                yon[1] = true;
+            if (ust != 999)
+                yon[2] = true;
+            if (sol != 999)
                 yon[3] = true;
 
-            if (yon[0] && sol <= sag && sol <= ust && sol <= alt)
+            if (yon[0] && alt <= ust && alt <= sol && alt <= sag)
                 return 0;
-            else if (yon[1] && ust <= alt && ust <= sag && ust <= sol)
+            else if (yon[1] && sag <= sol && sag <= ust && sag <= alt)
                 return 1;
-            else if (yon[2] && alt <= ust && alt <= sol && alt <= sag)
+            else if (yon[2] && ust <= alt && ust <= sag && ust <= sol)
                 return 2;
-            else if (yon[3] && sag <= sol && sag <= ust && sag <= alt)
+            else if (yon[3] && sol <= sag && sol <= ust && sol <= alt)
                 return 3;
             else
                 return -1;
-            
         }
 
         private void BittiMi()
