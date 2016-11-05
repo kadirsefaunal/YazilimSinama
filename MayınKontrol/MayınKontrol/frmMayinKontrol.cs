@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MayınKontrol
 {
-    public partial class Form1 : Form
+    public partial class frmMayinKontrol : Form
     {
-        public Form1()
+        public frmMayinKontrol()
         {
             InitializeComponent();
         }
@@ -21,57 +21,42 @@ namespace MayınKontrol
         int en, boy;
         private void btnOlustur_Click(object sender, EventArgs e)
         {
-            en = Convert.ToInt32(txtEn.Text);
-            boy = Convert.ToInt32(txtBoy.Text);
-            butonlar = new Button[en, boy];
-            Button btn;
-
-            for (int i = 0; i < en; i++)
+            if (txtEn.Text != "" && txtBoy.Text != "" && 
+                SayiMi(txtEn.Text) && SayiMi(txtBoy.Text))
             {
-                for (int j = 0; j < boy; j++)
+                en = Convert.ToInt32(txtEn.Text);
+                boy = Convert.ToInt32(txtBoy.Text);
+
+                if (en > 4 && boy > 4 && en < 46 && boy < 21)
                 {
-                    btn = new Button();
-                    btn.Name = "btn" + i + "_" + j;
-                    btn.Width = 30;
-                    btn.Height = 30;
-                    btn.Top = 50 + (i * 30);
-                    btn.Left = 10 + (j * 30);
-                    btn.FlatStyle = FlatStyle.Flat;
-
-                    if (i == 0 || j == 0 || i == (en - 1) || j == (boy - 1))
-                    {
-                        btn.BackColor = Color.Gray;
-                        btn.Tag = 999;
-                    }
-                    else
-                    {
-                        btn.BackColor = Color.Red;
-                        btn.Click += Btn_Click;
-                        btn.Tag = 0;
-                    }
-                    butonlar[i, j] = btn;
+                    Temizle();
+                    Olustur(en, boy);
+                    btnBasla.Enabled = true;
                 }
+                else
+                    MessageBox.Show("Lütfen ekrana sığmayacak boyut girmeyin.", "UYARI", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            foreach (var item in butonlar)
-            {
-                Controls.Add(item);
-            }
+            else
+                MessageBox.Show("Lütfen sayı girin!" , "UYARI", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnBasla_Click(object sender, EventArgs e)
         {
             if (btnBasla.Text == "Başla")
             {
-                butonlar[1, 1].BackColor = Color.White;
-                butonlar[1, 1].Tag = Convert.ToInt32(butonlar[1, 1].Tag) + 1;
                 timer.Start();
                 btnBasla.Text = "Dur";
+                txtBoy.Clear();
+                txtEn.Clear();
+                btnOlustur.Enabled = false;
             }
             else
             {
                 timer.Stop();
                 btnBasla.Text = "Başla";
+                btnOlustur.Enabled = true;
             }
         }
 
@@ -119,19 +104,20 @@ namespace MayınKontrol
                     break;
                 default:
                     timer.Stop();
+                    btnBasla.Text = "Başla";
+                    MessageBox.Show("Yon hatası!");
                     break;
             }
-            
+            BittiMi();
         }
 
         //0 = sol
         //1 = ust
         //2 = alt
         //3 = sag
-        bool[] yon;
         private int YonBul(int x, int y)
         {
-            yon = new bool[4]{ false, false, false, false };
+            bool[] yon = new bool[4]{ false, false, false, false };
             int sol = Convert.ToInt32(butonlar[x, y - 1].Tag);
             int ust = Convert.ToInt32(butonlar[x - 1, y].Tag);
             int alt = Convert.ToInt32(butonlar[x + 1, y].Tag);
@@ -157,6 +143,89 @@ namespace MayınKontrol
             else
                 return -1;
             
+        }
+
+        private void BittiMi()
+        {
+            bool durum = true;
+            foreach (Button btn in butonlar)
+            {
+                if (Convert.ToInt32(btn.Tag) == 0)
+                {
+                    durum = false;
+                    break;
+                }
+            }
+            if (durum)
+            {
+                timer.Stop();
+                btnBasla.Text = "Başla";
+                btnBasla.Enabled = false;
+                btnOlustur.Enabled = true;
+                MessageBox.Show("Tarama bitti!");
+            }
+        }
+
+        private void Temizle()
+        {
+            i = 1;
+            j = 1;
+            if (butonlar != null)
+            {
+                foreach (Button btn in butonlar)
+                {
+                    Controls.Remove(btn);
+                }
+            }
+        }
+
+        private void Olustur(int en, int boy)
+        {
+            butonlar = new Button[boy, en];
+            Button btn;
+
+            for (int i = 0; i < boy; i++)
+            {
+                for (int j = 0; j < en; j++)
+                {
+                    btn = new Button();
+                    btn.Name = "btn" + i + "_" + j;
+                    btn.Width = 30;
+                    btn.Height = 30;
+                    btn.Top = 70 + (i * 30);
+                    btn.Left = 13 + (j * 30);
+                    btn.FlatStyle = FlatStyle.Flat;
+
+                    if (i == 0 || j == 0 || i == (boy - 1) || j == (en - 1))
+                    {
+                        btn.BackColor = Color.Gray;
+                        btn.Tag = 999;
+                    }
+                    else
+                    {
+                        if (i != 1 || j != 1)
+                            btn.Click += Btn_Click;
+
+                        btn.BackColor = Color.Red;
+                        btn.Tag = 0;
+                    }
+                    butonlar[i, j] = btn;
+                }
+            }
+
+            foreach (var item in butonlar)
+            {
+                Controls.Add(item);
+            }
+        }
+
+        public bool SayiMi(string ifade)
+        {
+            foreach (char chr in ifade)
+            {
+                if (!Char.IsNumber(chr)) return false;
+            }
+            return true;
         }
     }
 }
