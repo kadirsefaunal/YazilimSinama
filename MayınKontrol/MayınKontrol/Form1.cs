@@ -41,7 +41,7 @@ namespace MayınKontrol
                     if (i == 0 || j == 0 || i == (en - 1) || j == (boy - 1))
                     {
                         btn.BackColor = Color.Gray;
-                        btn.Tag = -1;
+                        btn.Tag = 999;
                     }
                     else
                     {
@@ -81,61 +81,82 @@ namespace MayınKontrol
             if (btn.BackColor == Color.Red)
             {
                 btn.BackColor = Color.Gray;
-                btn.Tag = -1;
+                btn.Tag = 999;
             }
             else
             {
                 btn.BackColor = Color.Red;
                 btn.Tag = 0;
             }
-            MessageBox.Show(btn.Tag.ToString());
         }
 
         int i = 1, j = 1;
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(butonlar[i, j - 1].Tag) != -1 && Convert.ToInt32(butonlar[i, j - 1].Tag) == 0)
+            butonlar[i, j].BackColor = Color.LightGreen;
+            int yon = YonBul(i, j);
+            switch (yon)
             {
-                j--;
-                butonlar[i, j].Tag = 1;
-                butonlar[i, j].BackColor = Color.White;
+                case 0:
+                    j--;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                case 1:
+                    i--;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                case 2:
+                    i++;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                case 3:
+                    j++;
+                    butonlar[i, j].Tag = Convert.ToInt32(butonlar[i, j].Tag) + 1;
+                    butonlar[i, j].BackColor = Color.White;
+                    break;
+                default:
+                    timer.Stop();
+                    break;
             }
-            else if (Convert.ToInt32(butonlar[i - 1, j].Tag) != -1 && Convert.ToInt32(butonlar[i - 1, j].Tag) == 0)
-            {
-                i--;
-                butonlar[i, j].Tag = 1;
-                butonlar[i, j].BackColor = Color.White;
-            }
-            else if (Convert.ToInt32(butonlar[i + 1, j].Tag) != -1 && Convert.ToInt32(butonlar[i + 1, j].Tag) == 0)
-            {
-                i++;
-                butonlar[i, j].Tag = 1;
-                butonlar[i, j].BackColor = Color.White;
-            }
-            else if (Convert.ToInt32(butonlar[i, j + 1].Tag) != -1 && Convert.ToInt32(butonlar[i, j + 1].Tag) == 0)
-            {
-                j++;
-                butonlar[i, j].Tag = 1;
-                butonlar[i, j].BackColor = Color.White;
-            }
+            
         }
 
+        //0 = sol
+        //1 = ust
+        //2 = alt
+        //3 = sag
+        bool[] yon;
         private int YonBul(int x, int y)
         {
-            bool sol = false, sag = false, alt = false, ust = false;
-            if (Convert.ToInt32(butonlar[x - 1, y].Tag) == -1)
-                sol = true;
-            if (Convert.ToInt32(butonlar[x, y - 1].Tag) == -1)
-                ust = true;
-            if (Convert.ToInt32(butonlar[x + 1, y].Tag) == -1)
-                alt = true;
-            if (Convert.ToInt32(butonlar[x, y + 1].Tag) == -1)
-                sag = true;
+            yon = new bool[4]{ false, false, false, false };
+            int sol = Convert.ToInt32(butonlar[x, y - 1].Tag);
+            int ust = Convert.ToInt32(butonlar[x - 1, y].Tag);
+            int alt = Convert.ToInt32(butonlar[x + 1, y].Tag);
+            int sag = Convert.ToInt32(butonlar[x, y + 1].Tag);
 
-            if (!alt)
+            if (sol != 999)
+                yon[0] = true;
+            if (ust != 999)
+                yon[1] = true;
+            if (alt != 999)
+                yon[2] = true;
+            if (sag != 999)
+                yon[3] = true;
+
+            if (yon[0] && sol <= sag && sol <= ust && sol <= alt)
                 return 0;
-            else
+            else if (yon[1] && ust <= alt && ust <= sag && ust <= sol)
                 return 1;
+            else if (yon[2] && alt <= ust && alt <= sol && alt <= sag)
+                return 2;
+            else if (yon[3] && sag <= sol && sag <= ust && sag <= alt)
+                return 3;
+            else
+                return -1;
+            
         }
     }
 }
