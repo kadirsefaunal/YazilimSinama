@@ -16,3 +16,12 @@ C:\Users\Sefa\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\Mayın
 C:\Users\Sefa\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.exe
 C:\Users\Sefa\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.pdb
 C:\Users\Sefa\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.frmMayinKontrol.resources
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\bin\Debug\MayınKontrol.exe.config
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.exe
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\bin\Debug\MayınKontrol.exe
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\bin\Debug\MayınKontrol.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.csprojResolveAssemblyReference.cache
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.frmMayinKontrol.resources
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.Properties.Resources.resources
+C:\Users\Kadir\Desktop\YazilimSinama\MayınKontrol\MayınKontrol\obj\Debug\MayınKontrol.csproj.GenerateResource.Cache
