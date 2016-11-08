@@ -1,0 +1,8 @@
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\bin\Debug\SatrancAtHareketleri.exe.config
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\bin\Debug\SatrancAtHareketleri.exe
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\bin\Debug\SatrancAtHareketleri.pdb
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\obj\Debug\SatrancAtHareketleri.frmSatranc.resources
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\obj\Debug\SatrancAtHareketleri.Properties.Resources.resources
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\obj\Debug\SatrancAtHareketleri.csproj.GenerateResource.Cache
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\obj\Debug\SatrancAtHareketleri.exe
+C:\Users\Sefa\Desktop\SatrancAtHareketleri\SatrancAtHareketleri\obj\Debug\SatrancAtHareketleri.pdb
