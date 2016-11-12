@@ -22,6 +22,8 @@ namespace SatrancAtHareketleri
         //Klavuz noktalar ise tag = 2
         Button[,] butonlar;
         int en, boy;
+        int skor;
+
         private void btnOlustur_Click(object sender, EventArgs e)
         {
             en = Convert.ToInt32(txtEn.Text);
@@ -59,6 +61,7 @@ namespace SatrancAtHareketleri
             ButonKonumBul(btn);
             if (Convert.ToInt32(btn.Tag) == 2)
             {
+                skor++;
                 btn.Tag = 1;
                 btn.BackColor = Color.Red;
                 foreach (Button item in butonlar)
@@ -153,7 +156,7 @@ namespace SatrancAtHareketleri
 
         private void Kontrol()
         {
-            bool klavuz = false;
+            bool klavuz = false, tam = true;
             foreach (Button btn in butonlar)
             {
                 if (Convert.ToInt32(btn.Tag) == 2)
@@ -162,8 +165,19 @@ namespace SatrancAtHareketleri
                     break;
                 }
             }
-            if (!klavuz)
-                MessageBox.Show("Kaybettiniz! Hareket edebileceğiniz yer kalmadı!");
+            foreach (Button btn in butonlar)
+            {
+                if (Convert.ToInt32(btn.Tag) != 1)
+                {
+                    tam = false;
+                    break;
+                }
+            }
+
+            if (tam)
+                MessageBox.Show("Tebrikler! Kazandınız.\nSkorunuz: " + skor.ToString());
+            else if (!klavuz && !tam)
+                MessageBox.Show("Kaybettiniz! \nHareket edebileceğiniz yer kalmadı!\nSkorunuz: " + skor.ToString());
         }
     }
 }
