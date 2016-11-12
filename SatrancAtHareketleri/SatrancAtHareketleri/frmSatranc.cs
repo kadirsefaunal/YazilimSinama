@@ -26,7 +26,6 @@ namespace SatrancAtHareketleri
 
         private void btnOlustur_Click(object sender, EventArgs e)
         {
-            btnOlustur.Enabled = false;
             if (txtEn.Text != "" && txtBoy.Text != "" &&
                 SayiMi(txtEn.Text) && SayiMi(txtBoy.Text))
             {
@@ -36,9 +35,10 @@ namespace SatrancAtHareketleri
                 if (en > 4 && en < 11)
                 {
                     Olustur();
+                    btnOlustur.Enabled = false;
                 }
                 else
-                    MessageBox.Show("Lütfen aralık arasında değer girin!", "UYARI",
+                    MessageBox.Show("Lütfen aralık arasında değer girin!(5-10)", "UYARI",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
