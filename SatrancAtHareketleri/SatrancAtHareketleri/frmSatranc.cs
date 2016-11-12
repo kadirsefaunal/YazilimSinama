@@ -41,7 +41,7 @@ namespace SatrancAtHareketleri
                     btn.Top = 70 + (i * 30);
                     btn.Left = 13 + (j * 30);
                     btn.FlatStyle = FlatStyle.Flat;
-                    btn.Tag = 0;
+                    btn.Tag = 2;
                     btn.Click += Btn_Click1;
                     butonlar[i, j] = btn;
                 }
@@ -56,7 +56,114 @@ namespace SatrancAtHareketleri
         private void Btn_Click1(object sender, EventArgs e)
         {
             Button btn = (sender as Button);
-            MessageBox.Show(btn.Name);
+            ButonKonumBul(btn);
+            if (Convert.ToInt32(btn.Tag) == 2)
+            {
+                btn.Tag = 1;
+                btn.BackColor = Color.Red;
+                foreach (Button item in butonlar)
+                {
+                    if (Convert.ToInt32(item.Tag) != 1)
+                    {
+                        item.Tag = 0;
+                        item.BackColor = default(Color);
+                    }
+                }
+                KlavuzNoktaOlustur();
+                Kontrol();
+            }
+            else
+                MessageBox.Show("Buraya hareket edemezsiniz!");
+        }
+
+        int x, y;
+        private void ButonKonumBul(Button buton)
+        {
+            for (int i = 0; i < boy; i++)
+            {
+                for (int j = 0; j < en; j++)
+                {
+                    if (buton == butonlar[i, j])
+                    {
+                        x = i;
+                        y = j;
+                    }
+                }
+            }
+        }
+
+        private void KlavuzNoktaOlustur()
+        {
+            int a, b;
+
+            a = x - 2;
+            if (a >= 0)
+            {
+                b = y - 1;
+                if (b >= 0)
+                    KlavuzYap(a, b);
+                b = y + 1;
+                if (b < en)
+                    KlavuzYap(a, b);
+            }
+            
+            a = x + 2;
+            if (a < boy)
+            {
+                b = y - 1;
+                if (b >= 0)
+                    KlavuzYap(a, b);
+                b = y + 1;
+                if (b < en)
+                    KlavuzYap(a, b);
+            }
+
+
+            b = y - 2;
+            if (b >= 0)
+            {
+                a = x - 1;
+                if (a >= 0)
+                    KlavuzYap(a, b);
+                a = x + 1;
+                if (a < boy)
+                    KlavuzYap(a, b);
+            }
+
+            b = y + 2;
+            if (b < en)
+            {
+                a = x - 1;
+                if (a >= 0)
+                    KlavuzYap(a, b);
+                a = x + 1;
+                if (a < boy)
+                    KlavuzYap(a, b);
+            }
+        }
+
+        private void KlavuzYap(int a, int b)
+        {
+            if (Convert.ToInt32(butonlar[a, b].Tag) == 0)
+            {
+                butonlar[a, b].BackColor = Color.LightGreen;
+                butonlar[a, b].Tag = 2;
+            }
+        }
+
+        private void Kontrol()
+        {
+            bool klavuz = false;
+            foreach (Button btn in butonlar)
+            {
+                if (Convert.ToInt32(btn.Tag) == 2)
+                {
+                    klavuz = true;
+                    break;
+                }
+            }
+            if (!klavuz)
+                MessageBox.Show("Kaybettiniz! Hareket edebileceğiniz yer kalmadı!");
         }
     }
 }
