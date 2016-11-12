@@ -26,12 +26,30 @@ namespace SatrancAtHareketleri
 
         private void btnOlustur_Click(object sender, EventArgs e)
         {
-            en = Convert.ToInt32(txtEn.Text);
-            boy = Convert.ToInt32(txtBoy.Text);
+            btnOlustur.Enabled = false;
+            if (txtEn.Text != "" && txtBoy.Text != "" &&
+                SayiMi(txtEn.Text) && SayiMi(txtBoy.Text))
+            {
+                en = Convert.ToInt32(txtEn.Text);
+                boy = Convert.ToInt32(txtBoy.Text);
 
+                if (en > 4 && en < 11)
+                {
+                    Olustur();
+                }
+                else
+                    MessageBox.Show("Lütfen aralık arasında değer girin!", "UYARI",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+                MessageBox.Show("Lütfen sayı girin!", "UYARI",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void Olustur()
+        {
             butonlar = new Button[boy, en];
             Button btn;
-
             for (int i = 0; i < boy; i++)
             {
                 for (int j = 0; j < en; j++)
@@ -48,7 +66,6 @@ namespace SatrancAtHareketleri
                     butonlar[i, j] = btn;
                 }
             }
-
             foreach (var item in butonlar)
             {
                 Controls.Add(item);
@@ -109,7 +126,7 @@ namespace SatrancAtHareketleri
                 if (b < en)
                     KlavuzYap(a, b);
             }
-            
+
             a = x + 2;
             if (a < boy)
             {
@@ -154,9 +171,14 @@ namespace SatrancAtHareketleri
             }
         }
 
+        private void txtEn_KeyUp(object sender, KeyEventArgs e)
+        {
+            txtBoy.Text = txtEn.Text;
+        }
+        
         private void Kontrol()
         {
-            bool klavuz = false, tam = true;
+            bool klavuz = false, tam = true, bittiMi = false;
             foreach (Button btn in butonlar)
             {
                 if (Convert.ToInt32(btn.Tag) == 2)
@@ -173,11 +195,54 @@ namespace SatrancAtHareketleri
                     break;
                 }
             }
-
+            
             if (tam)
+            {
                 MessageBox.Show("Tebrikler! Kazandınız.\nSkorunuz: " + skor.ToString());
+                bittiMi = true;
+            }
             else if (!klavuz && !tam)
+            {
                 MessageBox.Show("Kaybettiniz! \nHareket edebileceğiniz yer kalmadı!\nSkorunuz: " + skor.ToString());
+                bittiMi = true;
+            }
+                
+            if (bittiMi)
+            {
+                DialogResult dr = MessageBox.Show("Tekrar oynamak ister misiniz?", "Yeniden dene!", 
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                    Temizle();
+                else
+                    Application.Exit();
+            }
+            
+        }
+
+        public bool SayiMi(string ifade)
+        {
+            foreach (char chr in ifade)
+            {
+                if (!Char.IsNumber(chr)) return false;
+            }
+            return true;
+        }
+
+        private void Temizle()
+        {
+            skor = 0;
+            en = 0;
+            boy = 0;
+            txtEn.Clear();
+            txtBoy.Clear();
+            btnOlustur.Enabled = true;
+            if (butonlar != null)
+            {
+                foreach (Button btn in butonlar)
+                {
+                    Controls.Remove(btn);
+                }
+            }
         }
     }
 }
