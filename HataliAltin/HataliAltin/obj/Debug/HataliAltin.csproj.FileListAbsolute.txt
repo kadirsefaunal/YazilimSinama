@@ -5,3 +5,9 @@ C:\Users\Sefa\Desktop\YazilimSinama\HataliAltin\HataliAltin\bin\Debug\HataliAlti
 C:\Users\Sefa\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.csprojResolveAssemblyReference.cache
 C:\Users\Sefa\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.exe
 C:\Users\Sefa\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\bin\Debug\HataliAltin.exe.config
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.exe
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\bin\Debug\HataliAltin.exe
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\bin\Debug\HataliAltin.pdb
+C:\Users\Kadir\Desktop\YazilimSinama\HataliAltin\HataliAltin\obj\Debug\HataliAltin.csprojResolveAssemblyReference.cache
